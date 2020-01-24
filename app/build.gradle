@@ -38,23 +38,5 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:4.1'
-    googleImplementation 'com.google.firebase:firebase-core:17.2.0'
-    googleImplementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     googleImplementation "com.google.android.gms:play-services-location:17.0.0"
-}
-
-if (getGradle().getStartParameter().getTaskRequests().toString().contains("Google")) {
-    apply plugin: 'com.google.gms.google-services'
-    apply plugin: 'io.fabric'
-
-    task copyJson(type: Copy) {
-        from '../../traccar-shared/google-services'
-        into '.'
-        include 'traccar-client-android.json'
-        rename('traccar-client-android.json', 'google-services.json')
-    }
-
-    afterEvaluate {
-        preBuild.dependsOn copyJson
-    }
 }
