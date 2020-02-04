@@ -1,14 +1,15 @@
 # RPC-Tracker 
-A changed Version of the [Traccar Client for Android](https://www.traccar.org/client)
+A changed Version of the [Traccar Client for Android](https://github.com/traccar/traccar-client-android)
 
 [![Get it on Google Play](http://www.tananaev.com/badges/google-play.svg)](https://play.google.com/store/apps/details?id=org.traccar.client)
+
+## Changes to the original [Traccar Client for Android](https://github.com/traccar/traccar-client-android)
+1. A new Option for disabeling the buffering if offline
+2. Insert the default values for the PRC Racing event (roundpalagruza.at) for an easy use. 
 
 ## Overview
 
 RPC-Tracker Client is an iOS GPS tracking application. It can work with [Traccar open source server software](https://github.com/traccar/traccar).
-
-## Team
-
 
 ## License
 
