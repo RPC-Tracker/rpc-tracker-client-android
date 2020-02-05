@@ -49,4 +49,13 @@
         android:summary="@string/settings_angle_summary"
         android:title="@string/settings_angle_title" />
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="buffer"
+        android:summaryOff="@string/settings_buffer_off_summary"
+        android:summaryOn="@string/settings_buffer_on_summary"
+        android:switchTextOff="@string/settings_buffer_off"
+        android:switchTextOn="@string/settings_buffer_on"
+        android:title="@string/settings_deactivate_buffer" />
+
 </PreferenceScreen>
