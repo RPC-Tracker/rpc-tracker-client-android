@@ -27,7 +27,7 @@
   <string name="settings_accuracy_low">Low</string>
   <string name="settings_foreground_title">Foreground service</string>
   <string name="settings_foreground_summary">Increase service priority</string>
-  <string name="settings_deactivate_buffer">Buffer</string>
+  <string name="settings_deactivate_buffer">Buffer Waypoints</string>
   <string name="settings_buffer_off_summary">Buffer deactivated</string>
   <string name="settings_buffer_on_summary">Buffer activated</string>
   <string name="settings_buffer_off">Activate</string>
