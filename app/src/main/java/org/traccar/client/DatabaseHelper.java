@@ -27,8 +27,8 @@ import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
-    public static final String DATABASE_NAME = "traccar.db";
+    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_NAME = "traccar.db";
 
     public interface DatabaseHandler<T> {
         void onComplete(boolean success, T result);
@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         private DatabaseHandler<T> handler;
         private RuntimeException error;
 
-        public DatabaseAsyncTask(DatabaseHandler<T> handler) {
+        DatabaseAsyncTask(DatabaseHandler<T> handler) {
             this.handler = handler;
         }
 
@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public DatabaseHelper(Context context) {
+    DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         db = getWritableDatabase();
     }
@@ -95,7 +95,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertPosition(Position position) {
+    void deletePositions() {
+        db.rawQuery("DELETE FROM position;", null);
+    }
+
+    void insertPosition(Position position) {
         ContentValues values = new ContentValues();
         values.put("deviceId", position.getDeviceId());
         values.put("time", position.getTime().getTime());
@@ -111,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insertOrThrow("position", null, values);
     }
 
-    public void insertPositionAsync(final Position position, DatabaseHandler<Void> handler) {
+    void insertPositionAsync(final Position position, DatabaseHandler<Void> handler) {
         new DatabaseAsyncTask<Void>(handler) {
             @Override
             protected Void executeMethod() {
@@ -121,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }.execute();
     }
 
-    public Position selectPosition() {
+    Position selectPosition() {
         Position position = new Position();
 
         Cursor cursor = db.rawQuery("SELECT * FROM position ORDER BY id LIMIT 1", null);
@@ -152,7 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return position;
     }
 
-    public void selectPositionAsync(DatabaseHandler<Position> handler) {
+    void selectPositionAsync(DatabaseHandler<Position> handler) {
         new DatabaseAsyncTask<Position>(handler) {
             @Override
             protected Position executeMethod() {
@@ -161,13 +165,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }.execute();
     }
 
-    public void deletePosition(long id) {
+    void deletePosition(long id) {
         if (db.delete("position", "id = ?", new String[] { String.valueOf(id) }) != 1) {
             throw new SQLException();
         }
     }
 
-    public void deletePositionAsync(final long id, DatabaseHandler<Void> handler) {
+    void deletePositionAsync(final long id, DatabaseHandler<Void> handler) {
         new DatabaseAsyncTask<Void>(handler) {
             @Override
             protected Void executeMethod() {

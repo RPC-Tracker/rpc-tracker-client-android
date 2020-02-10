@@ -29,7 +29,7 @@
         android:title="@string/settings_accuracy_title" />
 
     <EditTextPreference
-        android:defaultValue="300"
+        android:defaultValue="30"
         android:key="interval"
         android:numeric="integer"
         android:summary="@string/settings_interval_summary"
@@ -48,5 +48,14 @@
         android:numeric="integer"
         android:summary="@string/settings_angle_summary"
         android:title="@string/settings_angle_title" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="buffer"
+        android:summaryOff="@string/settings_buffer_off_summary"
+        android:summaryOn="@string/settings_buffer_on_summary"
+        android:switchTextOff="@string/settings_buffer_off"
+        android:switchTextOn="@string/settings_buffer_on"
+        android:title="@string/settings_deactivate_buffer" />
 
 </PreferenceScreen>

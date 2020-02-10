@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Traccar Client</string>
-  <string name="app_logo">Traccar</string>
+  <string name="app_name">RPC-Tracker</string>
+  <string name="app_logo">RPC-Tracker</string>
   <string name="shortcut_start">Start service</string>
   <string name="shortcut_stop">Stop service</string>
   <string name="shortcut_sos">Send SOS</string>
@@ -27,6 +27,11 @@
   <string name="settings_accuracy_low">Low</string>
   <string name="settings_foreground_title">Foreground service</string>
   <string name="settings_foreground_summary">Increase service priority</string>
+  <string name="settings_deactivate_buffer">Buffer Waypoints</string>
+  <string name="settings_buffer_off_summary">Buffer deactivated</string>
+  <string name="settings_buffer_on_summary">Buffer activated</string>
+  <string name="settings_buffer_off">Activate</string>
+  <string name="settings_buffer_on">Deactivate</string>
   <string name="menu_status">Status</string>
   <string name="menu_shortcuts">Add shortcuts</string>
   <string name="menu_clear">Clear</string>
