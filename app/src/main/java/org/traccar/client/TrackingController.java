@@ -26,6 +26,7 @@ public class TrackingController implements PositionProvider.PositionListener, Ne
     private static final String TAG = TrackingController.class.getSimpleName();
     private static final int RETRY_DELAY = 30 * 1000;
     private static final int WAKE_LOCK_TIMEOUT = 120 * 1000;
+    private static final String KEY_BUFFER = "buffer";
 
     private boolean isOnline;
     private boolean isWaiting;
@@ -78,6 +79,9 @@ public class TrackingController implements PositionProvider.PositionListener, Ne
     public void onPositionUpdate(Position position) {
         StatusActivity.addMessage(context.getString(R.string.status_location_update));
         if (position != null) {
+            if (!preferences.getBoolean(KEY_BUFFER, true)) {
+                databaseHelper.deletePositions();
+            }
             write(position);
         }
     }
